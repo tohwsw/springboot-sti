@@ -8,6 +8,7 @@ ENV GRADLE_VERSION 2.6
 ENV MAVEN_VERSION 3.3.9
 
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel unzip && \
+    yum clean all -y && \
     (curl -0 http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
@@ -38,7 +39,7 @@ LABEL io.k8s.description="Platform for building Spring Boot applications with ma
 
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/sti
 COPY ./.sti/bin/ /usr/local/sti
-RUN chown -R 1001:1001 /usr/local/sti
+RUN chmod +x /usr/local/sti/*
 
 RUN chown -R 1001:1001 /opt/openshift
 
