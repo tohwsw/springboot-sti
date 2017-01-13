@@ -25,6 +25,7 @@ RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel unzip && \
 
 ENV PATH=/opt/maven/bin/:/opt/gradle/bin/:$PATH
 
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-2.b15.el7_3.x86_64/
 
 ENV BUILDER_VERSION 1.0
 
