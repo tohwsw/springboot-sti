@@ -38,6 +38,7 @@ LABEL io.k8s.description="Platform for building Spring Boot applications with ma
 
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/sti
 COPY ./.sti/bin/ /usr/local/sti
+RUN chown -R 1001:1001 /usr/local/sti
 
 RUN chown -R 1001:1001 /opt/openshift
 
