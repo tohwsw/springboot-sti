@@ -5,18 +5,16 @@ MAINTAINER wayne toh
 # Install build tools on top of base image
 # Java jdk 8, Maven 3.3, Gradle 2.6
 ENV GRADLE_VERSION 2.6
-ENV MAVEN_VERSION 3.3.3
+ENV MAVEN_VERSION 3.3.9
 
-RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel  \
-    tar unzip bc which lsof java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
-    yum clean all -y && \
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
     (curl -0 http://www.eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | \
     tar -zx -C /usr/local) && \
     mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     curl -sL -0 https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -o /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
     unzip /tmp/gradle-${GRADLE_VERSION}-bin.zip -d /usr/local/ && \
-    rm /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
+    rm -y /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
     mv /usr/local/gradle-${GRADLE_VERSION} /usr/local/gradle && \
     ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle && \
     mkdir -p /opt/openshift && \
