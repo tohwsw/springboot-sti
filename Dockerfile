@@ -14,7 +14,7 @@ RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel unzip && \
     ln -sf /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
     curl -sL -0 https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -o /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
     unzip /tmp/gradle-${GRADLE_VERSION}-bin.zip -d /usr/local/ && \
-    rm -y /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
+    rm -f /tmp/gradle-${GRADLE_VERSION}-bin.zip && \
     mv /usr/local/gradle-${GRADLE_VERSION} /usr/local/gradle && \
     ln -sf /usr/local/gradle/bin/gradle /usr/local/bin/gradle && \
     mkdir -p /opt/openshift && \
